@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="utf-8"/>
+    <title>Kalkulator ocen</title>
+    <meta name="description" content=""/>
+    <meta name="keywords" content="Kalkulator ocen "/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewpost" content="width=device-width, initial-scale=1.0"/>
+    <meta name="author" content="Dominik Szczepański"/>
+
+    <!-- CSS -->
+    <style>
+
+    body{
+        background-color: antiquewhite;
+        margin: 0;
+    }
+    main{
+        background-color: white;
+        text-align: center;
+        justify-content: center;
+        position: absolute;  
+        top: 50%;  
+        left: 50%;  
+        transform: translate(-50%, -50%);
+        width: 600px;
+        height: 450px;
+        border-radius: 5%;
+    }
+    .calculator form {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: nowrap;
+    }
+    .calculator input[type="number"] {
+        width: 45%; 
+        padding: 10px;
+        margin-right: 5px; 
+        font-size: 14px; 
+        box-sizing: border-box; 
+    }
+    .submit{
+        font-size: larger;
+    }
+    
+    .result {
+        margin-top: 10px;
+        font-size: larger;
+    }
+    .footer {
+        position: fixed;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        background-color: antiquewhite;
+        /*background-color: #333;*/
+        color: black;
+        /*color: #fff;*/
+        padding: 10px;
+        text-align: center;
+    }
+    .procenty{
+        font-size: medium;
+    }
+
+    #title{
+        font-size: xx-large;
+    }
+    .wyborButton{
+        font-size: 20px;
+        /*border-radius: 3px;
+        background-color: #f5f5f5;
+        color: #333;
+        border: 1px solid #ccc;
+        padding: 5px 10px;
+        cursor: pointer;*/
+    }
+
+    .wyborButtons {
+        font-size: 30px;
+        align-items: center;
+        
+    }
+
+    </style>
+
+    <!-- JS math -->
+    <script>
+
+    function ocena_test() {
+    var dzielna_S = parseFloat(document.getElementById("dzielna_S").value);
+    var dzielnik_S = parseFloat(document.getElementById("dzielnik_S").value);
+    
+    if (isNaN(dzielna_S) || isNaN(dzielnik_S) || dzielnik_S === 0) {
+        document.getElementById("result.s").innerHTML = "Wprowadź poprawne liczby";
+    } else if (dzielnik_S < dzielna_S) {
+        document.getElementById("result.s").innerHTML = "Wprowadź poprawne liczby";
+    } else {
+        var procent = (dzielna_S / dzielnik_S) * 100;
+        
+        procent = Math.round(procent); 
+        
+        console.log("procent: " + procent + "%");
+
+        if (procent >= 0 && procent <= 39) {
+            console.log("Liczba należy do przedziału [0, 39]");
+            document.getElementById("result.s").innerHTML = "Wynik: " + procent + "% <br> Ocena: 1";
+        } else if (procent >= 40 && procent <= 54) {
+            console.log("Liczba należy do przedziału [40, 54]");
+            document.getElementById("result.s").innerHTML = "Wynik: " + procent + "% <br>" + "Ocena: 2";   
+        } else if (procent >= 55 && procent <= 74) {
+            console.log("Liczba należy do przedziału [55, 74]");
+            document.getElementById("result.s").innerHTML = "Wynik: " + procent + "% <br>" + "Ocena: 3";
+        } else if (procent >= 75 && procent <= 89) {
+            console.log("Liczba należy do przedziału [75, 89]");
+            document.getElementById("result.s").innerHTML = "Wynik: " + procent + "% <br>" + "Ocena: 4";            
+        } else if (procent >= 90 && procent <= 98) {
+            console.log("Liczba należy do przedziału [90, 95]");
+            document.getElementById("result.s").innerHTML = "Wynik: " + procent + "% <br>" + "Ocena: 5";
+        } else if (procent >= 99 && procent <= 100) {
+            console.log("Liczba należy do przedziału [99, 100]");
+            document.getElementById("result.s").innerHTML = "Wynik: " + procent + "% <br>" + "Ocena: 6";            
+        } else {
+            console.log("Liczba nie należy do żadnego zdefiniowanego przedziału.");
+            document.getElementById("result.s").innerHTML = "Błąd. Spróbuj jeszcze raz."; 
+        }
+
+    }
+    }
+
+    function ocena_kartkowka() {
+    var dzielna_K = parseFloat(document.getElementById("dzielna_K").value);
+    var dzielnik_K = parseFloat(document.getElementById("dzielnik_K").value);
+    
+    if (isNaN(dzielna_K) || isNaN(dzielnik_K) || dzielnik_K === 0) {
+        document.getElementById("result.k").innerHTML = "Wprowadź poprawne liczby";
+    } else if (dzielnik_K < dzielna_K) {
+        document.getElementById("result.k").innerHTML = "Wprowadź poprawne liczby";
+    } else {
+        var procent = (dzielna_K / dzielnik_K) * 100;
+        
+        procent = Math.round(procent); 
+
+        console.log("procent: " + procent + "%");
+
+        if (procent >= 0 && procent <= 49) {
+            console.log("Liczba należy do przedziału [0, 49]");
+            document.getElementById("result.k").innerHTML = "Wynik: " + procent + "% <br> Ocena: 1";
+        } else if (procent >= 50 && procent <= 59) {
+            console.log("Liczba należy do przedziału [50, 59]");
+            document.getElementById("result.k").innerHTML = "Wynik: " + procent + "% <br>" + "Ocena: 2";   
+        } else if (procent >= 60 && procent <= 74) {
+            console.log("Liczba należy do przedziału [60, 74]");
+            document.getElementById("result.k").innerHTML = "Wynik: " + procent + "% <br>" + "Ocena: 3";
+        } else if (procent >= 75 && procent <= 89) {
+            console.log("Liczba należy do przedziału [75, 89]");
+            document.getElementById("result.k").innerHTML = "Wynik: " + procent + "% <br>" + "Ocena: 4";            
+        } else if (procent >= 90 && procent <= 99) {
+            console.log("Liczba należy do przedziału [90, 99]");
+            document.getElementById("result.k").innerHTML = "Wynik: " + procent + "% <br>" + "Ocena: 5";            
+        } else if (procent = 100) {
+            console.log("Liczba równa 100");
+            document.getElementById("result.k").innerHTML = "Wynik: " + procent + "% <br>" + "Ocena: 6"; 
+        } else {
+            console.log("Liczba nie należy do żadnego zdefiniowanego przedziału.");
+            document.getElementById("result.k").innerHTML = "Błąd. Spróbuj jeszcze raz."; 
+        }
+
+    }
+    }
+
+    </script>
+
+    <!-- JS reload and choosing -->
+    <script>
+    
+    document.addEventListener("DOMContentLoaded", function() {
+    var wyborDiv = document.getElementById("wybor");
+    wyborDiv.style.display = "block";
+    });
+
+    document.addEventListener("DOMContentLoaded", function() {
+    var testDiv = document.getElementById("test");
+    testDiv.style.display = "none";
+    });
+
+    document.addEventListener("DOMContentLoaded", function() {
+    var kartkowkaDiv = document.getElementById("kartkowka");
+    kartkowkaDiv.style.display = "none";
+    });
+
+    function wybor(){
+        var wyborDiv = document.getElementById("wybor");
+        var testDiv = document.getElementById("test");
+        var kartkowkaDiv = document.getElementById("kartkowka");
+        //var wynikiDiv = document.getElementById("wyniki");
+            
+        wyborDiv.style.display="block";
+        testDiv.style.display="none";
+        kartkowkaDiv.style.display="none";
+        //wynikiDiv.style.display="none";
+    }
+
+    function test(){
+        var wyborDiv = document.getElementById("wybor");
+        var testDiv = document.getElementById("test");
+        var kartkowkaDiv = document.getElementById("kartkowka");
+        
+        wyborDiv.style.display="none";
+        testDiv.style.display="block";
+        kartkowkaDiv.style.display="none";
+    }
+
+    function kartkowka(){
+        var wyborDiv = document.getElementById("wybor");
+        var testDiv = document.getElementById("test");
+        var kartkowkaDiv = document.getElementById("kartkowka");
+        
+        wyborDiv.style.display="none";
+        testDiv.style.display="none";
+        kartkowkaDiv.style.display="block";
+    }
+
+    </script>
+
+</head>
+
+<body>
+    <main>
+        <div class="container">
+            <div class="title">
+                <h1>Kalkulator ocen</h1>
+            </div>
+            <div id="wybor">
+
+                <br>
+                <h3>Prosze wybrac jaka praca będzie sprawdzana:</h3>
+                <br>
+                <div id="wyborButtons">
+                    <button class="wyborButton" onclick="test()"; data-modal-target="#test">Test</button>
+                  
+                    <button class="wyborButton" onclick="kartkowka()"; data-modal-target="#kartk">Kartkówka</button>
+                </div>
+            </div>
+            <div id="test">
+                <div class="procenty">
+                    Progi procentowe dla testu:
+                    
+                    <br>    0 – 39 % - niedostateczny;
+                    <br>    40 – 54% - dopuszczający;                  
+                    <br>    55 – 74 % - dostateczny;                    
+                    <br>    75 – 89 % - dobry;                   
+                    <br>    90 – 98 % - bardzo dobry;                   
+                    <br>    99 – 100 % - celujący.
+                    <br><br>
+                    
+                </div>
+                <div class="calculator">
+                    <input type="number" id="dzielna_S" placeholder="Zdobyte punkty:">
+                    <input type="number" id="dzielnik_S" placeholder="Max punktów:">
+                    <button class="submit" onclick="ocena_test()">Oblicz</button>
+                    <div class="result" id="result.s"></div>
+                </div>
+            </div>
+            <div id="kartkowka">
+                <div class="procenty">
+                    Progi procentowe dla kartkówki:
+                    
+                    <br>    0 – 49 % - niedostateczny;
+                    <br>    50 – 59% - dopuszczający;                  
+                    <br>    60 – 74 % - dostateczny;                    
+                    <br>    75 – 89 % - dobry;                   
+                    <br>    90 – 99 % - bardzo dobry;                   
+                    <br>    100 % - celujący.
+                    <br><br>
+                    
+                </div>
+                <div class="calculator">
+                    <input type="number" id="dzielna_K" placeholder="Zdobyte punkty:">
+                    <input type="number" id="dzielnik_K" placeholder="Max punktów:">
+                    <button class="submit" onclick="ocena_kartkowka()">Oblicz</button>
+                    <div class="result" id="result.k"></div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <div class="footer"> Dominik Szczepański Copyright &copy; 2024 </div>
+</body>
+
+</html>
+
+<!--made by: Dominik Szczepański https://github.com/Dominik-developer -->
