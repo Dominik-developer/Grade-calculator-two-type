@@ -1,6 +1,6 @@
 # Grade-calculator-two-type
 
-Grade calculator created for two types of grades. First you choose than you count. <br>
+Grade calculator created for two types of grades. Made as one-page website. First you choose than you count. <br>
 
 Kalkulator ocen dla dwóch typów ocen - dwie skale %.<br>
 
